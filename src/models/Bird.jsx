@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useAnimations, useGLTF } from "@react-three/drei";
 
-import birdScene from "~/assets/3d/bird.glb";
+// import birdScene from "~/assets/3d/bird.glb";
 
 const Bird = () => {
   const birdRef = useRef();
@@ -11,7 +11,7 @@ const Bird = () => {
 
   // Play the "Take 001" animation when the component mounts
   // Note: Animation names can be found on the Sketchfab website where the 3D model is hosted.
-  useEffect(() => {
+  useLayoutEffect(() => {
     actions["Take 001"].play();
   }, []);
 

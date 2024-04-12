@@ -13,12 +13,12 @@ const Sky = ({ isRotating }) => {
   // 'delta' represents the time in seconds since the last frame.
   useFrame((_, delta) => {
     if (isRotating) {
-      skyRef.current.rotation.y += 0.5 * delta; // Adjust the rotation speed as needed
+      skyRef.current.rotation.y -= 0.1 * delta; // Adjust the rotation speed as needed
     }
   });
 
   return (
-    <mesh ref={skyRef}>
+    <mesh ref={skyRef} scale={[300, 300, 300]}>
       {/* use the primitive element when you want to directly embed a complex 3D model or scene */}
       <primitive object={sky.scene} />
     </mesh>

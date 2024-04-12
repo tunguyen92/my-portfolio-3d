@@ -1,18 +1,18 @@
 import { NavLink } from "react-router-dom";
 
-import { logo } from "~/assets/images";
+import { metal } from "~/assets/images";
 
 const Navbar = () => {
   return (
     <header className="header">
       <NavLink to="/">
-        <img src={logo} alt="logo" className="w-18 h-18 object-contain" />
+        <img src={metal} alt="logo" className="w-20 h-20 object-contain" />
       </NavLink>
       <nav className="flex text-lg gap-7 font-medium">
         <NavLink
           to="/about"
           className={({ isActive }) =>
-            isActive ? "text-blue-600" : "text-black"
+            `hover:text-yellow-40 ${isActive ? "text-yellow-40" : "text-white"}`
           }
         >
           About
@@ -20,7 +20,7 @@ const Navbar = () => {
         <NavLink
           to="/projects"
           className={({ isActive }) =>
-            isActive ? "text-blue-600" : "text-black"
+            `hover:text-yellow-40 ${isActive ? "text-yellow-40" : "text-white"}`
           }
         >
           Projects
