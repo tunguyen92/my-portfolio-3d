@@ -31,6 +31,8 @@ const titleArr = [
   "˚˖𓍢ִִ໋𓊝𓆞_______________________˚˖𓍢ִ✧˚",
 ];
 
+const animationName = "Animation loop";
+
 const Pursuit = ({
   isRotating,
   setIsRotating,
@@ -44,8 +46,6 @@ const Pursuit = ({
   const { gl } = useThree();
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const intervalRef = useRef(null);
-
-  const animationActions = actions["Animation loop"];
 
   const handlePointerDown = (event) => {
     event.preventDefault();
@@ -62,12 +62,12 @@ const Pursuit = ({
     if (event.key === " ") {
       if (!isRotating) {
         setIsRotating(true);
-        animationActions.play();
-        animationActions.setEffectiveTimeScale(0.6);
-        animationActions.paused = false;
+        actions[animationName].play();
+        actions[animationName].setEffectiveTimeScale(0.6);
+        actions[animationName].paused = false;
       } else {
         setIsRotating(false);
-        animationActions.paused = true;
+        actions[animationName].paused = true;
       }
     }
   };
@@ -78,11 +78,11 @@ const Pursuit = ({
 
     if (!isRotating) {
       setIsRotating(true);
-      animationActions.play();
-      animationActions.paused = false;
+      actions[animationName].play();
+      actions[animationName].paused = false;
     } else {
       setIsRotating(false);
-      animationActions.paused = true;
+      actions[animationName].paused = true;
     }
   };
 
@@ -118,7 +118,7 @@ const Pursuit = ({
 
   useFrame(() => {
     if (isRotating) {
-      const animationPlaybackTime = animationActions?.time;
+      const animationPlaybackTime = actions[animationName].time;
 
       // Set the current stage based on the island's orientation
       switch (true) {

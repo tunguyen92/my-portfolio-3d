@@ -1,31 +1,33 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Suspense, lazy } from "react";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 
-import { Footer, Navbar } from "./components";
+import { Loader } from "./components";
 import { About, Contact, Home, Projects } from "./pages";
+
+const HomeTemplateLazy = lazy(() => import("~/templates/home-template"));
 
 const App = () => {
   return (
-    <main className="bg-[#34353a]">
+    <Suspense fallback={<Loader />}>
       <Router>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/*"
-            element={
-              <>
-                <Routes>
-                  <Route path="/about" element={<About />} />
-                  <Route path="/projects" element={<Projects />} />
-                  <Route path="/contact" element={<Contact />} />
-                </Routes>
-                <Footer />
-              </>
-            }
-          />
+
+          <Route path="" element={<HomeTemplateLazy />}>
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+
+            <Route path="*" element={<Contact />} />
+          </Route>
         </Routes>
       </Router>
-    </main>
+    </Suspense>
   );
 };
 

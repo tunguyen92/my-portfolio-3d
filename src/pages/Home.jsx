@@ -6,6 +6,7 @@ import { soundoff, soundon, zoomout, spacebutton } from "~/assets/icons";
 import wargame from "~/assets/wargame.mp3";
 import { HomeInfo, Loader } from "~/components";
 import { Pursuit, Sky } from "~/models";
+import Header from "~/templates/home-template/Header";
 
 const isMobile = window.innerWidth < 1024;
 
@@ -31,6 +32,8 @@ const Home = () => {
 
   return (
     <section className="w-full h-screen relative">
+      <Header />
+
       {!isRotating && (
         <>
           {/* {currentStage && <HomeInfo currentStage={currentStage} />} */}
@@ -78,6 +81,8 @@ const Home = () => {
           groundColor="#947d3e"
           intensity={1}
         />
+
+        {/* <Suspense fallback={<Loader />}> */}
         <Sky isRotating={isRotating} />
 
         <Pursuit
@@ -86,9 +91,9 @@ const Home = () => {
           setCurrentStage={setCurrentStage}
           setIsGrabbing={setIsGrabbing}
         />
+        {/* </Suspense> */}
 
         {currentStage && <HomeInfo currentStage={currentStage} />}
-
         <OrbitControls
           makeDefault
           maxDistance={isMobile ? 40 : 25}

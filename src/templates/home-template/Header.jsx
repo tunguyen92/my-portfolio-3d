@@ -1,12 +1,10 @@
 import { NavLink } from "react-router-dom";
 
-import { metal } from "~/assets/images";
-
-const Navbar = () => {
+const Header = () => {
   return (
     <header className="header">
       <NavLink to="/">
-        <img src={metal} alt="logo" className="w-20 h-20 object-contain" />
+        <img src="/logo.png" alt="logo" className="w-10 h-10 object-contain" />
       </NavLink>
       <nav className="flex text-lg gap-7 font-medium">
         <NavLink
@@ -30,4 +28,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;

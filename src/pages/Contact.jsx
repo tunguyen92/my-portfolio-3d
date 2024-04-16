@@ -1,10 +1,10 @@
 import emailjs from "@emailjs/browser";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useLayoutEffect, useRef, useState } from "react";
 
 import useAlert from "~/hooks/useAlert";
 import { Alert, Loader } from "~/components";
-import Fox from "~/models/Fox";
+import { contact } from "~/assets/images";
 
 const Contact = () => {
   const formRef = useRef();
@@ -69,6 +69,10 @@ const Contact = () => {
       );
   };
 
+  useLayoutEffect(() => {
+    document.title = "Tu Nguyen";
+  }, []);
+
   return (
     <section className="relative flex lg:flex-row flex-col max-container">
       {alert.show && <Alert {...alert} />}
@@ -81,7 +85,7 @@ const Contact = () => {
           onSubmit={handleSubmit}
           className="w-full flex flex-col gap-7 mt-14"
         >
-          <label className="text-black-500 font-semibold">
+          <label className="text-white font-semibold">
             Name
             <input
               type="text"
@@ -95,7 +99,7 @@ const Contact = () => {
               onBlur={handleBlur}
             />
           </label>
-          <label className="text-black-500 font-semibold">
+          <label className="text-white font-semibold">
             Email
             <input
               type="email"
@@ -109,7 +113,7 @@ const Contact = () => {
               onBlur={handleBlur}
             />
           </label>
-          <label className="text-black-500 font-semibold">
+          <label className="text-white font-semibold">
             Your Message
             <textarea
               name="message"
@@ -135,34 +139,8 @@ const Contact = () => {
         </form>
       </div>
 
-      <div className="lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]">
-        <Canvas
-          camera={{
-            position: [0, 0, 5],
-            fov: 75,
-            near: 0.1,
-            far: 1000,
-          }}
-        >
-          <directionalLight position={[0, 0, 1]} intensity={2.5} />
-          <ambientLight intensity={1} />
-          <pointLight position={[5, 10, 0]} intensity={2} />
-          <spotLight
-            position={[10, 10, 10]}
-            angle={0.15}
-            penumbra={1}
-            intensity={2}
-          />
-
-          <Suspense fallback={<Loader />}>
-            <Fox
-              currentAnimation={currentAnimation}
-              position={[1, -2, 0]}
-              rotation={[12.5, -1, 0]}
-              scale={[0.03, 0.03, 0.03]}
-            />
-          </Suspense>
-        </Canvas>
+      <div className="flex items-center justify-center lg:w-1/2 w-full lg:h-auto h-[350px]">
+        <img src={contact} alt="contact" />
       </div>
     </section>
   );

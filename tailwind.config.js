@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -25,7 +27,36 @@ export default {
       boxShadow: {
         card: "0px 1px 2px 0px rgba(0, 0, 0, 0.05)",
       },
+      animation: {
+        loading: "loading 1.2s infinite",
+      },
+
+      keyframes: {
+        loading: {
+          "0%, 100%": {
+            transform: "translateY(0)",
+          },
+          "50%": {
+            transform: "translateY(15px)",
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          "animation-delay": (value) => {
+            return {
+              "animation-delay": value,
+            };
+          },
+        },
+        {
+          values: theme("transitionDelay"),
+        }
+      );
+    }),
+  ],
 };
