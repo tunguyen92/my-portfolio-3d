@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { CTA } from "~/components";
 import { projects } from "~/constants";
 import { arrow } from "~/assets/icons";
+import { myCV } from "~/assets/documents";
 
 const Projects = () => {
   useLayoutEffect(() => {
@@ -19,9 +20,13 @@ const Projects = () => {
         </span>
       </h1>
 
-      <p className="text-white/70 mt-2 leading-relaxed">
+      <p className="text-white/70 mt-2 mb-5 leading-relaxed">
         These are my personal projects to improve my skills and expertise.
       </p>
+
+      <a href={myCV} target="_blank" className="btn">
+        Download CV
+      </a>
 
       <div className="flex flex-wrap my-20 gap-16">
         {projects.map((project) => (

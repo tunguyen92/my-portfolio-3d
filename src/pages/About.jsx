@@ -1,13 +1,14 @@
+import { useLayoutEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 
-import { useLayoutEffect } from "react";
 import { CTA } from "~/components";
-
 import { experiences, skills } from "~/constants";
+import { myCV } from "~/assets/documents";
 
 const About = () => {
   useLayoutEffect(() => {
@@ -24,12 +25,14 @@ const About = () => {
         👋
       </h1>
 
-      <div className="mt-5 flex flex-col gap-3 text-white/70">
-        <p>
-          Front-end developer in Vietnam, specializes in building website
-          applications.
-        </p>
-      </div>
+      <p className="my-5 text-white/70">
+        Front-end developer in Vietnam, specializes in building website
+        applications.
+      </p>
+
+      <a href={myCV} target="_blank" className="btn">
+        Download CV
+      </a>
 
       <div className="py-10 flex flex-col">
         <h3 className="subhead-text">My Skills</h3>

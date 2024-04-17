@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense, useLayoutEffect, useRef, useState } from "react";
 
 import { soundoff, soundon, zoomout, spacebutton } from "~/assets/icons";
-import wargame from "~/assets/wargame.mp3";
+import wargame from "~/assets/audios/wargame.mp3";
 import { HomeInfo, Loader } from "~/components";
 import { Pursuit, Sky } from "~/models";
 import Header from "~/templates/home-template/Header";
