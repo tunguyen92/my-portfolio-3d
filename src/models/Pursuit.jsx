@@ -59,6 +59,7 @@ const Pursuit = ({
   };
 
   const handleKeyDown = (event) => {
+    event.preventDefault();
     if (event.key === " ") {
       if (!isRotating) {
         setIsRotating(true);
@@ -73,12 +74,12 @@ const Pursuit = ({
   };
 
   const handleTouchStart = (e) => {
-    e.stopPropagation();
     e.preventDefault();
 
     if (!isRotating) {
       setIsRotating(true);
       actions[animationName].play();
+      actions[animationName].setEffectiveTimeScale(0.6);
       actions[animationName].paused = false;
     } else {
       setIsRotating(false);

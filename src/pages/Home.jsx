@@ -103,7 +103,7 @@ const Home = () => {
           // maxPolarAngle={Math.PI / 2.5}
         />
         <TrackballControls
-          noZoom={false}
+          noZoom={isMobile ? true : false}
           zoomSpeed={1.5}
           dynamicDampingFactor={0.2}
         />
